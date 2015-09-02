@@ -1,15 +1,27 @@
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash, jsonify
 
+import parse_plants
+
 DEBUG = True
 SECRET_KEY = 'super secret key'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
+# Load inital values for plants.
+PLANTS = parse_plants.parse_file('cpc/plantdata.txt')
+
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route("/plants.json")
+def plants():
+    results = {
+        'data': PLANTS
+    }
+    return jsonify(**results)
 
 @app.route("/results", methods=['POST'])
 def results():
