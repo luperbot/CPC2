@@ -9,17 +9,17 @@
       $scope.selected_plants = {};
       $scope.errors = [];
       $scope.plants_num = 0;
-      $scope.plot_width_max = 26;
-      $scope.plot_length_max = 26;
+      $scope.plot_width_max = 11;
+      $scope.plot_length_max = 11;
       $scope.plot_width = 0;
       $scope.plot_length = 0;
-    
+
       var addError = function (error) {
         if ($scope.errors.indexOf(error)) {
           $scope.errors.push(error);
         }
       }
-     
+
       $scope.range = function(num) {
         return Array.apply(null, Array(num)).map(function (_, i) {return i;});
       }
@@ -50,14 +50,19 @@
           // If failure of getting plants information.
           addError('Unable to retrieve list of plants.');
       });
-      
+
       //function to add plants from the main list
-      $scope.addPlant = function(plant) {
+      $scope.addPlant = function (plant) {
         if ($scope.plotFull()) {
           return false;
         }
         $scope.plants_num += 1;
         $scope.selected_plants[plant] += 1;
+      }
+
+      $scope.removePlant = function (plant) {
+        $scope.plants_num -= 1;
+        $scope.selected_plants[plant] -= 1;
       }
 
     }]);

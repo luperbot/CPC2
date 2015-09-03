@@ -67,18 +67,20 @@
         </div>
         <div class="col-md-2" ng-class="{attn: (plot_width * plot_length)}">
           <h3>Current List</h3>
-          <p ng-show="!plants_num">No plant selected.</p>
-          <p ng-show="plants_num < (plot_width * plot_length)" ng-hide="!plants_num">
-            Select more plants ({{plants_num}} out of {{plot_width * plot_length}}).
+          <h3 ng-hide="!(plot_width * plot_length)">({{plants_num}} out of {{plot_width * plot_length}})</h3>
+          <p ng-show="!plants_num">No plants selected.</p>
+          <p class="text-danger" ng-show="plants_num > (plot_width * plot_length)">
+            Remove plants, too many selected.
           </p>
-          <p ng-show="plants_num > (plot_width * plot_length)">
-            Remove plants, too many selected ({{plants_num}} out of {{plot_width * plot_length}}).
-          </p>
-          <ul ng-show="plants_num">
-            <li ng-repeat="(plant, num) in selected_plants" ng-hide="!num">
-              {{num}} - {{plant}}
-            </li>
-          </ul>
+          <div ng-show="plants_num">
+            <div class="row" ng-repeat="(plant, num) in selected_plants" ng-hide="!num">
+              <div class="btn-group">
+                <a type="button" class="btn btn-xs btn-default" ng-click="removePlant(plant)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                <a type="button" class="btn btn-xs btn-default disabled">{{num}}</a>
+                <a type="button" class="btn btn-xs btn-default disabled">{{plant}}</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
