@@ -18,10 +18,7 @@ def index():
 
 @app.route("/plants.json")
 def plants():
-    results = {
-        'data': PLANTS
-    }
-    return jsonify(**results)
+    return jsonify(**PLANTS)
 
 @app.route("/results", methods=['POST'])
 def results():

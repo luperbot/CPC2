@@ -44,9 +44,6 @@ a:active {
 }
 
 /* Real CSS */
-body {
-  background-color: #fff;
-}
 
 .modal a {
   color: #27ae60;
@@ -55,4 +52,20 @@ body {
 .content {
   padding-top: 100px;
 }
+
+.plantblock {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 5px;
+}
+
+
+.attn {
+  border-style: solid;
+  border-width: 5px;
+}
+
 
