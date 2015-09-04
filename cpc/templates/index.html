@@ -91,11 +91,13 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <p ng-hide="!(plot_width * plot_length)">({{plants_num}} out of {{plot_width * plot_length}})</p>
-                <p ng-show="!plants_num">No plants selected.</p>
-                <p class="text-danger" ng-show="plants_num > (plot_width * plot_length)">
-                  Remove plants, too many selected.
-                </p>
+                <div class="col-md-12">
+                  <p ng-hide="!(plot_width * plot_length)">({{plants_num}} out of {{plot_width * plot_length}})</p>
+                  <p ng-show="!plants_num">No plants selected.</p>
+                  <p class="text-danger" ng-show="plants_num > (plot_width * plot_length)">
+                    Remove plants, too many selected.
+                  </p>
+                </div>
               </div>
               <div class="row" ng-repeat="(plant, num) in selected_plants" ng-hide="!num">
                 <div class="btn-group">
