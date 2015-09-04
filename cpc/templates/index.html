@@ -48,7 +48,7 @@
       </div>
       <div class="row">
         <div class="col-md-2">
-          <div class="panel panel-default" ng-class="{attn: !(plot_width * plot_length)}">
+          <div class="panel panel-default" ng-class="{attn: currentStep(1)}">
             <div class="panel-heading">
               <h3 class="panel-title">1. Pick plot size</h3>
             </div>
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-          <div class="panel panel-default" ng-class="{attn: plants_num && plants_num == (plot_width * plot_length)}">
+          <div class="panel panel-default" ng-class="{attn: currentStep(3)}">
             <div class="panel-heading">
               <h3 class="panel-title">3. Submit List</h3>
             </div>
@@ -85,7 +85,7 @@
         </div>
         <div class="col-md-2">
 
-          <div class="panel panel-default" ng-class="{attn: (plot_width * plot_length) && (plot_width * plot_length) > plants_num}">
+          <div class="panel panel-default" ng-class="{attn: currentStep(2)}">
             <div class="panel-heading">
               <h3 class="panel-title">2. Select Plants</h3>
             </div>

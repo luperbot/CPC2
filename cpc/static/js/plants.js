@@ -51,7 +51,7 @@
           addError('Unable to retrieve list of plants.');
       });
 
-      //function to add plants from the main list
+      // Function to add plants from the main list.
       $scope.addPlant = function (plant) {
         if ($scope.plotFull()) {
           return false;
@@ -63,6 +63,18 @@
       $scope.removePlant = function (plant) {
         $scope.plants_num -= 1;
         $scope.selected_plants[plant] -= 1;
+      }
+
+      // Function to determine current step.
+      $scope.currentStep = function (step) {
+        var plot_size = $scope.plot_width * $scope.plot_length;
+        if (!plot_size) {
+          return step === 1;
+        } else if (plot_size > $scope.plants_num) {
+          return step === 2;
+        } else {
+          return step === 3;
+        }
       }
 
     }]);
