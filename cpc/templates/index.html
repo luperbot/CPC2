@@ -47,19 +47,33 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-2" ng-class="{attn: !(plot_width * plot_length)}">
-          <h3>Pick your plot size:</h3>
-          <div class="form-group">
-            Width:
-            <select class="form-control" ng-model="plot_width">
-              <option ng-repeat="i in range(plot_width_max)">{{i}}</option>
-            </select>
+        <div class="col-md-2">
+          <div class="panel panel-default" ng-class="{attn: !(plot_width * plot_length)}">
+            <div class="panel-heading">
+              <h3 class="panel-title">1. Pick plot size</h3>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                Width:
+                <select class="form-control" ng-model="plot_width">
+                  <option ng-repeat="i in range(plot_width_max)">{{i}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                Length:
+                <select class="form-control" ng-model="plot_length">
+                  <option ng-repeat="i in range(plot_length_max)">{{i}}</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            Length:
-            <select class="form-control" ng-model="plot_length">
-              <option ng-repeat="i in range(plot_length_max)">{{i}}</option>
-            </select>
+          <div class="panel panel-default" ng-class="{attn: plants_num && plants_num == (plot_width * plot_length)}">
+            <div class="panel-heading">
+              <h3 class="panel-title">3. Submit List</h3>
+            </div>
+            <div class="panel-body">
+              <button class="btn btn-success">Generate Garden</button>
+            </div>
           </div>
         </div>
         <div class="col-md-8">
@@ -70,25 +84,25 @@
           </div>
         </div>
         <div class="col-md-2">
-          <div class="row" ng-class="{attn: plants_num && plants_num == (plot_width * plot_length)}">
-            <div class="col-md-12">
-              <button class="btn btn-success">Generate Garden</button>
+
+          <div class="panel panel-default" ng-class="{attn: (plot_width * plot_length) && (plot_width * plot_length) > plants_num}">
+            <div class="panel-heading">
+              <h3 class="panel-title">2. Select Plants</h3>
             </div>
-          </div>
-          <div class="row" ng-class="{attn: (plot_width * plot_length) && (plot_width * plot_length) > plants_num}">
-            <div class="col-md-12">
-              <h3>Current List</h3>
-              <h3 ng-hide="!(plot_width * plot_length)">({{plants_num}} out of {{plot_width * plot_length}})</h3>
-              <p ng-show="!plants_num">No plants selected.</p>
-              <p class="text-danger" ng-show="plants_num > (plot_width * plot_length)">
-                Remove plants, too many selected.
-              </p>
-            </div>
-            <div class="col-md-12" ng-repeat="(plant, num) in selected_plants" ng-hide="!num">
-              <div class="btn-group">
-                <a type="button" class="btn btn-xs btn-default" ng-click="removePlant(plant)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                <a type="button" class="btn btn-xs btn-default disabled">{{num}}</a>
-                <a type="button" class="btn btn-xs btn-default disabled">{{plant}}</a>
+            <div class="panel-body">
+              <div class="row">
+                <p ng-hide="!(plot_width * plot_length)">({{plants_num}} out of {{plot_width * plot_length}})</p>
+                <p ng-show="!plants_num">No plants selected.</p>
+                <p class="text-danger" ng-show="plants_num > (plot_width * plot_length)">
+                  Remove plants, too many selected.
+                </p>
+              </div>
+              <div class="row" ng-repeat="(plant, num) in selected_plants" ng-hide="!num">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-xs btn-default" ng-click="removePlant(plant)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                  <a type="button" class="btn btn-xs btn-default disabled">{{num}}</a>
+                  <a type="button" class="btn btn-xs btn-default disabled">{{plant}}</a>
+                </div>
               </div>
             </div>
           </div>
